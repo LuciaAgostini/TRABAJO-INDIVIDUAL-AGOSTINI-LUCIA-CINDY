@@ -1,4 +1,3 @@
-```jsx
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -45,4 +44,87 @@ export default function RootLayout({ children }) {
                 <Link
                   key={enlace.href}
                   href={enlace.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+                >
+                  {enlace.label}
+                </Link>
+              ))}
+              <Link
+                href="/notes/create"
+                className="ml-2 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-400"
+              >
+                + Nueva nota
+              </Link>
+            </div>
+          </div>
+        </nav>
+
+        <div className="flex flex-1 flex-col">{children}</div>
+
+        <footer className="border-t border-white/10 bg-gray-900">
+          <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+            <div>
+              <h2 className="text-lg font-bold text-white">Notas Next</h2>
+              <p className="mt-3 text-sm text-gray-400">
+                Proyecto de la materia hecho con Next.js, React y Tailwind CSS para
+                guardar y organizar apuntes sobre el framework.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-300">
+                Navegacion
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                {enlaces.map((enlace) => (
+                  <li key={enlace.href}>
+                    <Link href={enlace.href} className="text-gray-400 hover:text-white">
+                      {enlace.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-300">
+                Rutas del proyecto
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li><Link href="/categorias" className="text-gray-400 hover:text-white">/categorias (nueva)</Link></li>
+                <li><Link href="/notes/favoritas" className="text-gray-400 hover:text-white">/notes/favoritas (anidada)</Link></li>
+                <li><Link href="/categorias/rutas" className="text-gray-400 hover:text-white">/categorias/[slug] (dinamica)</Link></li>
+                <li><Link href="/notes/create" className="text-gray-400 hover:text-white">/notes/create</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-300">
+                Sobre mi
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm text-gray-400">
+                <li>👤 Agostini Lucia Cindy</li>
+                <li>🎓 Tercer año · Programacion</li>
+                <li>✉️ l.agostini@itecriocuarto.org.ar</li>
+                <li>
+                  <a
+                    href="https://github.com/LuciaAgostini"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    🐙 github.com/LuciaAgostini
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 py-4 text-center text-xs text-gray-500">
+            © {new Date().getFullYear()} Notas Next · Hecho con Next.js 16
+          </div>
+        </footer>
+      </body>
+    </html>
+  );
+}
